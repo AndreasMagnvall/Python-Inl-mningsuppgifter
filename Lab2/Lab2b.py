@@ -1,37 +1,36 @@
 #!/usr/bin/python
 
 
-def frame(text):
-    text_length = len(text)
-    text_row = "* " + text + " *"
-    other_row = "*" * text_length + "*"*4
-    new_text = other_row + "\n" + text_row + "\n" + other_row
-    return new_text
+def create_shopping_list():
+    slist = ["1. Kurslitteratur", "2. Anteckningsblock", "3. Penna"]
+    return slist
 
 
-def triangle(row):
-    output = ""
-    for number in range(0, row+1):
-        output += "*" * number + "\n"
+def shopping_add(slist = []):
+    print("Vad ska läggas till i listan?")
+    inp = input()
+    inp = str(len(slist) + 1) + ". " + inp
+    slist.append(inp)
+    return
 
 
-def flag(size=0):
+def shopping_remove(slist = []):
+    print("Vilken sak vill du ta bort ur listan?")
+    inp = input()
+    slist.remove(inp)
+    return
 
-    amount = 21*size
+def shopping_edit(slist):
+    print("Vilken sak vill du ändra på?")
+    inp = input()
+    print("Vad ska det stå istället för " + slist.index(inp) + "?")
+    return
 
-    text_row = "*" * int(((amount-1)/2)) + " " + "*" * (int((amount-1)/2))
-    text_column = ""
-    for number in range(1, 10):
-        if(number == 5):
-            text_column += "\n"
-        else:
-            text_column += text_row + "\n"
-    return text_column
-
-
-print(frame("Välkommen till Python"))
+def shopping_list(slist):
+    for x in slist:
+        print(x)
+    return
 
 
-print(triangle(3))
-
-print(flag(1))
+slist = create_shopping_list()
+shopping_list(slist)
