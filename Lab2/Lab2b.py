@@ -16,8 +16,13 @@ def shopping_add(slist = []):
 
 def shopping_remove(slist = []):
     print("Vilken sak vill du ta bort ur listan?")
-    inp = input()
-    slist.remove(inp)
+    inp = int(input())
+    slist.pop(inp -1)
+
+    for number in range(inp-1, len(slist)):
+        slist[number] = list(slist[number])
+        slist[number][0] = str(number+1)
+        slist[number] = "".join(slist[number])
     return
 
 def shopping_edit(slist):
@@ -33,4 +38,8 @@ def shopping_list(slist):
 
 
 slist = create_shopping_list()
+shopping_list(slist)
+shopping_add(slist)
+shopping_list(slist)
+shopping_remove(slist)
 shopping_list(slist)
